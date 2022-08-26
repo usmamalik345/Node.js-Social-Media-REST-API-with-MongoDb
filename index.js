@@ -14,9 +14,19 @@ const app = express()
 // what to ask about this from "u" why we use this praser
 
 
-mongoose.connect(process.env.MONGO_URL,  { useNewUrlParser: true, useUnifiedTopology: true }, ()=> {
-    console.log("Connected to Mongo");
-});
+const url ="mongodb+srv://usmamalik346:pionneerr12@cluster0.vla2txe.mongodb.net/?retryWrites=true&w=majority"
+async function connect() {
+    try{
+        await mongoose.connect(url)
+        console.log('Connected to MongoDB');
+    } catch (error){
+        console.log('Failed to connect to MongoDB');
+        console.log(error);
+
+    }}
+
+    connect();
+
 
 // Middleware we use while doing POST method to give our Option 
 
